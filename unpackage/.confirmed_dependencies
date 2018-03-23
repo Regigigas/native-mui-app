@@ -1,0 +1,13 @@
+{
+	"index.html": {
+		"resources": [
+			"containers/main.html"
+		],
+		"refer": [
+			"containers/list.html",
+			"containers/main.html",
+			"containers/mine.html",
+			"containers/more.html"
+		]
+	}
+}
