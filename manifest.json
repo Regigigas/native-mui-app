@@ -138,6 +138,13 @@
 					"containers/more.html"
 				],
 				"priority": 0
+			},
+			"containers/list.html": {
+				"resources": [
+					"containers/list-content.html"
+				],
+				"refer": [],
+				"priority": 0
 			}
 		},
 		"idle": {

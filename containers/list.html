@@ -1,54 +1,73 @@
 <!DOCTYPE html>
 <html>
-
 	<head>
 		<meta charset="utf-8">
-		<title>Hello MUI</title>
+		<title></title>
 		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
 		<link rel="stylesheet" href="../css/mui.min.css">
-		<style>
-			html,
-			body {
-				background-color: #efeff4;
-			}
-			.title {
-				padding: 20px 15px 10px;
-				color: #6d6d72;
-				font-size: 15px;
-				background-color: #fff;
-			}
-		</style>
+		<link rel="stylesheet" type="text/css" href="../css/list.css"/>
 	</head>
 
-	<body>
-			
-		<div class="mui-content">
-			list
+	<body class="higher">
+		<div class="header">
+			<header class="mui-bar mui-bar-nav">
+				<a class="mui-icon mui-icon-search mui-pull-right"></a>			
+			</header>
+			<div id="sliderSegmentedControl" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+				<a class="mui-control-item mui-active" href="in_theaters">
+					正在热映
+				</a>
+				<a class="mui-control-item" href="coming_soon">
+					即将上映
+				</a>
+				<a class="mui-control-item" href="top250">
+					TOP250
+				</a>
+			</div>
 		</div>
-		<script src="../js/mui.min.js"></script>
-		<script>
-				// var fn = function(){
-				// 	return 20
-				// }
-				
-				// fn.toString = function(){
-				// 	return 10
-				// }
-				
-				// //获取原始值
-				// fn.valueOf = function(){
-				// 	return 5
-				// }
-				
-				// console.log(10 + fn )
-				
-				//   对象->字符串的时候   优先执行toString方法，如果没有toString方法，调用valueOf方法 来获取初始值
-				
-				//   对象->数值的时候  优先执行valueOf方法，获取初始值，如果没有的话，执行toString方法
-
-		</script>
+		
+		<div class="mui-content"></div>
 	</body>
+	<script src="../js/mui.min.js"></script>
+	<script type="text/javascript">
+		//启用双击监听
+		mui.init({
+			gestureConfig:{
+				doubletap:true
+			},
+			subpages:[{
+				url:'list-content.html',
+				id:'list-content.html',
+				styles:{
+					top: '110px',
+					bottom: '0px',
+				}
+			}]
+		});
+		
+		//双击header实现回到顶部
+		var contentWebview = null;
+		document.querySelector('header').addEventListener('doubletap',function () {
+			if(contentWebview==null){
+				contentWebview = plus.webview.currentWebview().children()[0];
+			}
+			//可以控制在某一个窗口的页面中执行一段js代码
+			contentWebview.evalJS("mui('#pullrefresh').pullRefresh().scrollTo(0,0,100)");
+		});
+		
+		
+		//控制list-content去执行rerenderFilms
+		mui('.mui-segmented-control').on('tap','a',function  () {
+			if(contentWebview==null){
+				contentWebview = plus.webview.currentWebview().children()[0];
+			}
+			contentWebview.evalJS("rerenderFilms('"+this.getAttribute('href')+"')");
+		})
+	
+		
+	</script>
 
 </html>

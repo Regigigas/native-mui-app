@@ -9,5 +9,13 @@
 			"containers/mine.html",
 			"containers/more.html"
 		]
+	},
+	"containers/list.html": {
+		"resources": [
+			"containers/list-content.html"
+		],
+		"refer": [
+			"containers/list-content.html"
+		]
 	}
 }
