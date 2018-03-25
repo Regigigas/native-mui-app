@@ -8,6 +8,7 @@
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 
 		<link rel="stylesheet" href="../css/mui.min.css">
+		<!-- 引入 swiper 轮播 -->
 		<link rel="stylesheet" href="../css/swiper-4.1.6.min.css" />
 		<link rel="stylesheet" type="text/css" href="../css/main.css"/>
 	</head>
@@ -33,7 +34,8 @@
 				<header>
 					<h2>{{type}}</h2>
 					<a>更多</a>
-				</header>			
+				</header>
+				<!-- vue 中使用 ref 做标记 -->
 				<div ref='box' class="film-content mui-scroll-wrapper">
 					<ul :style="{width:(130*films.length+30)+'px'}" class="mui-scroll">
 						<li v-for="film in films" :key="film.id" class="film-item">
@@ -42,7 +44,7 @@
 							</div>
 							<h3>{{film.title}}</h3>
 							<div class="star">
-								
+								<!-- vue 中循环数据 -->
 								<i v-for="x in getStars(film.rating.stars)" :key="x" class="mui-icon mui-icon-star-filled"></i>
 								<i v-for="y in (5-getStars(film.rating.stars))" :key="y" class="mui-icon mui-icon-star"></i>
 								<span>{{film.rating.average}}</span>
@@ -101,7 +103,7 @@
 			},
 			updated:function  () {
 			// mounted:function  () {
-				console.log(123)
+				// 设置页面滚动事件, $refs 获取标记的为 box 的盒子
 				mui(this.$refs.box).scroll({
 					 deceleration: 0.0005, //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
 					 bounce: true, //是否启用回弹

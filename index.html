@@ -28,12 +28,8 @@
 				<span class="mui-icon mui-icon-list"><span class="mui-badge">9</span></span>
 				<span class="mui-tab-label">列表</span>
 			</a>
-			<a class="mui-tab-item" href="./containers/more.html">
-				<span class="mui-icon mui-icon-contact"></span>
-				<span class="mui-tab-label">更多</span>
-			</a>
 			<a class="mui-tab-item" href="./containers/mine.html">
-				<span class="mui-icon mui-icon-gear"></span>
+				<span class="mui-icon mui-icon-contact"></span>
 				<span class="mui-tab-label">我的</span>
 			</a>
 		</nav>
@@ -47,7 +43,7 @@
 			});
 			
 			//存放子界面里的页面的路径？？？
-			var subpages = ['./containers/main.html', './containers/list.html', './containers/more.html', './containers/mine.html'];
+			var subpages = ['./containers/main.html', './containers/list.html', './containers/mine.html'];
 			
 			// 子界面的样式
 			var subpage_style = {
@@ -64,7 +60,8 @@
 				// 获取到当前窗口, 也就是这个应用的中的主窗口
 				var self = plus.webview.currentWebview();
 				// 循环创建子界面并嵌入 H5 页面
-				for (var i = 0; i < 4; i++) {
+				// i 传入几 就创建几 
+				for (var i = 0; i < 3; i++) {
 					var temp = {};
 					// 创建子窗口 1 -url 2-id 3-样式
 					var sub = plus.webview.create(subpages[i], subpages[i], subpage_style);

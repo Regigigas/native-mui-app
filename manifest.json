@@ -143,7 +143,25 @@
 				"resources": [
 					"containers/list-content.html"
 				],
-				"refer": [],
+				"refer": [
+					"containers/search.html"
+				],
+				"priority": 0
+			},
+			"containers/search.html": {
+				"resources": [
+					"containers/search-content.html"
+				],
+				"refer": [
+					"containers/search.html"
+				],
+				"priority": 0
+			},
+			"containers/mine.html": {
+				"resources": [],
+				"refer": [
+					"containers/login.html"
+				],
 				"priority": 0
 			}
 		},

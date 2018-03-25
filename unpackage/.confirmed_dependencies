@@ -15,7 +15,22 @@
 			"containers/list-content.html"
 		],
 		"refer": [
-			"containers/list-content.html"
+			"containers/list-content.html",
+			"containers/search.html"
+		]
+	},
+	"containers/search.html": {
+		"refer": [
+			"containers/search.html",
+			"containers/search-content.html"
+		],
+		"resources": [
+			"containers/search-content.html"
+		]
+	},
+	"containers/mine.html": {
+		"refer": [
+			"containers/login.html"
 		]
 	}
 }
